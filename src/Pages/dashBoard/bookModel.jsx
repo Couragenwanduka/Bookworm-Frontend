@@ -9,14 +9,14 @@ import { SaveBookToLocalStorage } from '../../hooks/book.hook';
 
 const BookModal = ({ isOpen, onRequestClose, book }) => {
   const [text, setText] = useState('');
-  const [chapter, setChapter] = useState('');
+  // const [chapter, setChapter] = useState('');
   const [hours, setHours] = useState('');
   const [rating, setRating] = useState('');
   const { setBookDetails } = SaveBookToLocalStorage();
 
   const handleGetChapter = (text) => {
     const response = getChapter(text);
-    setChapter(response);
+    // setChapter(response);
     if (response.length >= 10) {
       setHours('15hrs');
     } else {

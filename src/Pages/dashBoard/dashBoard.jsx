@@ -83,8 +83,9 @@ const DashBoard = () => {
   }, [activeCategory,]);
  
   useEffect(() => {
+    fetchSavedBooks();
     if (userDetails) {
-      fetchSavedBooks();
+      
       const groupBooks = () => {
         const grouped = handleCategoryDivision();
         setGroupedBooks(grouped);

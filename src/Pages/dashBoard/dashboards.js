@@ -52,16 +52,16 @@ export const updateBookCategory = async (id, text) => {
 }
 
 
-export const getText = async (book) => {
+export const getText = async (url) => {
     try {
         const response = await axios.post(`${base}/get-text`,{
-          url:book
+          url
         });
         if (response.status !== 200) {
             throw new Error('Failed to fetch text content');
         }
 
-        return response.data; // Assuming the response data directly contains the text content
+        return response.data; 
     } catch (error) {
         console.error('Error fetching text:', error);
         return null; // Handle error gracefully or return appropriate response
@@ -69,33 +69,24 @@ export const getText = async (book) => {
 };
 
 
-export const getChapter = (text) => {
+export const getChapter = (text, currentPage = 1) => {
   // Split the text into chapters based on the occurrence of the word "chapter"
   const chapters = text.split(/chapter/i);
 
   // Filter out any empty strings
   const filteredChapters = chapters.filter(chapter => chapter.trim() !== '');
 
-  // Initialize array to hold chapter details
-  const chapterDetails = [];
+  // Get the chapter for the current page
+  const chapterContent = filteredChapters[currentPage - 1]?.trim() || '';
 
-  // Iterate through filteredChapters and extract chapter number and first 50 letters
-  filteredChapters.forEach((chapter, index) => {
-    // Extract chapter number
-    const chapterNumber = index + 1;
-
-    // Extract first 50 letters
-    const first50Letters = chapter.substring(0, 50);
-
-    // Push the details as an object into the chapterDetails array
-    chapterDetails.push({
-      chapterNumber: chapterNumber,
-      first50Letters: first50Letters
-    });
-  });
-
-  return chapterDetails;
+  // Return the chapter details
+  return {
+    chapterNumber: currentPage,
+    chapterContent: chapterContent,
+    totalChapters: filteredChapters.length
+  };
 };
+
 
 
 export const customStyles = {
