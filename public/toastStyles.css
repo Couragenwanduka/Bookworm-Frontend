@@ -1,0 +1,16 @@
+/* toastStyles.css */
+.Toastify__toast {
+    background-color: #333 !important; /* Dark background */
+    color: #fff !important; /* Light text */
+    border-radius: 8px !important; /* Rounded corners */
+    font-family: Arial, sans-serif !important; /* Font family */
+    
+}
+
+.Toastify__progress-bar {
+    background-color: #ffcc00 !important; /* Custom progress bar color */
+}
+
+.Toastify__close-button {
+    color: #fff !important; /* Close button color */
+}

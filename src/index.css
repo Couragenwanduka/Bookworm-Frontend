@@ -1,0 +1,183 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+/* index.css */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+
+#signBtn{
+    background-color:  rgb(255, 194, 94);
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#logBtn{
+    background-color: transparent;
+    color: rgb(255, 194, 94);
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-left: 50px;
+    border-color:  rgb(255, 194, 94);
+    border-style: solid;
+    border-width: 1px;
+}
+#hero{
+    background-color: hsla(189, 20%, 19%, 1);
+}
+#heroText{
+    color: hsla(187, 12%, 64%, 1);
+    ;
+}
+/* src/Slider.css */
+.slider-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    flex: 0 0 20%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    background: hsla(189, 20%, 19%, 1);
+    color: white;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Added transition for scale */
+    border-radius: 20px;
+    transform: scale(0.8);
+    font-size: 10px;
+    overflow-wrap: break-word;
+    inline-size: 500px;
+    width: 100px;
+    margin-top: 50px;
+  }
+  
+  .slide.active {
+    transform: scale(1.1); 
+    opacity: 1;
+    font-size: 13px;
+    color: white !important;
+    border-radius: 20px;
+  }
+  
+  .slide.prev, .slide.next {
+    opacity: 0.7;
+    transform: scale(0.9); /* Change scale for the adjacent slides */
+    
+  }
+  
+  .slide img {
+    max-width: 100px;
+    margin-bottom: 20px;
+    margin-left: 60px;
+    width: 50px;
+    height: 50px;
+  }
+ 
+  
+  @media (max-width: 768px) {
+    .slide {
+      flex: 0 0 60%;
+      width: 100px;
+      margin-left: -30px;
+    }
+    #signBtn{
+        margin-left: -60px;
+    }
+    #btnDiv{
+        display: flex;
+    }
+    #logBtn{
+        margin-left: 10px;
+    }
+    #hero{
+       display: flex;
+       flex-direction: column;
+    }
+    #heroText{
+        inline-size: 400px;
+    }
+    .slide.active{
+        display: none;
+    }
+    #or::before{
+      content: '';
+      display: inline-block;
+      position: relative;
+      width: 5em;
+      height: 1px; 
+      vertical-align: middle;
+      background-color: #97AAAD5C; 
+      margin-right: 0.5em; 
+      margin-left: 2em;
+    }
+    #or::after{
+      content: '';
+      display: inline-block;
+      position: relative;
+      width: 1em; 
+      height: 1px; 
+      vertical-align: middle;
+      background-color: #97AAAD5C; 
+      margin-right: 0.5em; 
+      margin-left: 6em;
+    }
+  }
+  
+  /* Target the scrollbar */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    background: #192E31;
+    display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #192E31; /* Background color of the scrollbar track */
+    border-radius: 20px; /* Optional: Rounded corners */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Optional: Rounded corners */
+    width: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+#or::before{
+  content: '';
+  display: inline-block;
+  position: relative;
+  width: 10em;
+  height: 1px; 
+  vertical-align: middle;
+  background-color: #97AAAD5C; 
+  margin-right: 0.5em; 
+  margin-left: 6em; 
+}
+#or::after{
+  content: '';
+  display: inline-block;
+  position: relative;
+  width: 10em; 
+  height: 1px; 
+  vertical-align: middle;
+  background-color: #97AAAD5C; 
+  margin-left: 0.5em; 
+}
