@@ -75,7 +75,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
             )}
           </div>
           <div className="w-3/4">
-            <h1 className="text-white font-inter text-xl font-semibold mb-2">
+            <h1 className="text-white font-inter text-lg font-semibold mb-2">
               {book.title}
             </h1>
             <span>

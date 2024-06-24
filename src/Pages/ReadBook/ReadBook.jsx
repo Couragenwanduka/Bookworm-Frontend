@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import { getText, getChapter } from '../dashBoard/dashboards';
 import { SaveBookToLocalStorage } from '../../hooks/book.hook';
 
+
 const ReadBook = () => {
-    // const [text, setText] = useState('');
     const [currentChapter, setCurrentChapter] = useState({ chapterNumber: 1, chapterContent: '', totalChapters: 0 });
     const [isLoading, setIsLoading] = useState(true);
     const { bookDetails } = SaveBookToLocalStorage();
     const [currentPage, setCurrentPage] = useState(1);
-
     useEffect(() => {
         const handleGetText = async () => {
             setIsLoading(true);
@@ -56,10 +55,10 @@ const ReadBook = () => {
             <div className='flex'>
                 {/* Table of Contents */}
                 <div className='w-60 h-screen bg-div3Color'>
-                    <p className='text-white ml-16 mt-10 text-base font-normal font-inter mb-5'>Table of Contents</p>
+                    <p className='text-white ml-10 mt-10 text-base font-normal font-inter mb-5'>Table of Contents</p>
                     {[...Array(currentChapter.totalChapters).keys()].map(index => (
                         <div key={index} className='flex flex-col mt-4'>
-                            <h3 className='ml-5 text-customTextColor text-lg font-extrabold'>Chapter {index + 1}</h3>
+                            <h3 className='ml-10 text-customTextColor text-lg font-extrabold'>Chapter {index + 1}</h3>
                         </div>
                     ))}
                 </div>

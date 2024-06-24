@@ -121,6 +121,6 @@ export const customStyles = {
       border:'none'
     },
     overlay: {
-      backgroundColor: 'black', // Make the overlay transparent
+      backgroundColor: 'rgba(0, 0, 0, 0.8)'
     },
   };
