@@ -24,7 +24,11 @@ export const theme = {
       borderColor3:'#55686B',
       textColor:'#97AAAD',
       textColor2:'#655A3F',
-      bookColor:'#BCE6EC'
+      bookColor:'#BCE6EC',
+      aiDiv:'#264246',
+      arrowBgColor:'#395255',
+      bgAi:'#275A97',
+      serverBg:'#20393C'
       
 
     },

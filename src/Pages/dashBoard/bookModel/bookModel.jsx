@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import { getText } from './dashboards';
-import { getChapter } from './dashboards';
+import { getText } from '../dashboards';
+import { getChapter } from '../dashboards';
 import { Link } from 'react-router-dom';
-import { customStylesForBookModal } from './dashboards';
-import { SaveBookToLocalStorage } from '../../hooks/book.hook';
+import CustomTabs from './bookModel2';
+import { customStylesForBookModal } from '../dashboards';
+import { SaveBookToLocalStorage } from '../../../hooks/book.hook';
 
 const BookModal = ({ isOpen, onRequestClose, book }) => {
   const [text, setText] = useState('');
@@ -57,25 +58,25 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
       ariaHideApp={false}
       style={customStylesForBookModal}
     >
-      <div className="mt-2">
+      <div className="mt-1 overflow-y-scroll h-screen">
         <div
           className="ml-52 text-customTextColor font-inter text-2xl mb-3 cursor-pointer"
           onClick={onRequestClose}
         >
           <p className="ml-96">X</p>
         </div>
-        <div className="flex h-2/5">
+        <div className="flex h-1/5">
           <div className="mr-3">
             {book.formats && book.formats['image/jpeg'] && (
               <img
                 src={book.formats['image/jpeg']}
                 alt={book.title}
-                className="mb-2 w-full h-full"
+                className="mb-2 w-full h-56"
               />
             )}
           </div>
           <div className="w-3/4">
-            <h1 className="text-white font-inter text-lg font-semibold mb-2">
+            <h1 className="text-white font-inter text-base font-semibold ">
               {book.title}
             </h1>
             <span>
@@ -85,7 +86,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
                 </span>
               )}
             </span>
-            <div className="flex mt-10">
+            <div className="flex mt-2">
               <span className="flex-1">
                 <span className="flex">
                   <img
@@ -137,14 +138,14 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
               </span>
             </div>
             <div className="flex flex-col">
-              <div className="bg-white w-80 h-2 rounded-md mt-5"></div>
+              <div className="bg-white w-80 h-2 rounded-md mt-2 mb-1"></div>
               <p className="mt-4 text-base font-inter text-customTextColor">
                 0%
               </p>
             </div>
-            <div className="mt-2 flex">
+            <div className="mt- flex">
               <Link to={'/read-book'}>
-                <span className="flex flex-1 bg-customYellow p-3 rounded gap-2 cursor-pointer">
+                <span className="flex flex-1 bg-customYellow p-2 rounded gap-2 cursor-pointer">
                   <img src="src/assets/Leading Icon.png" alt="Read Icon" />
                   <p className="font-inter font-semibold">Read Book</p>
                 </span>
@@ -153,7 +154,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
                 <img
                   src="src/assets/Leading Icon (2).png"
                   alt="Listen Icon"
-                  className="w-7 h-7 ml-3"
+                  className="w-5 h-5 ml-3"
                 />
                 <p className="text-customYellow font-inter font-semibold ml-2">
                   Listen
@@ -167,7 +168,9 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
             </div>
           </div>
         </div>
-        <div></div>
+        <div>
+         <CustomTabs/>
+        </div>
       </div>
     </Modal>
   );

@@ -181,3 +181,12 @@
   background-color: #97AAAD5C; 
   margin-left: 0.5em; 
 }
+
+.react-tabs__tab--selected{
+  color: white;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 2px solid  rgb(255, 194, 94);
+  /* padding-bottom: 10px; */
+}
+
+

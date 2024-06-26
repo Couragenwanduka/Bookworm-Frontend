@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useDrag } from 'react-dnd';
 import { useState } from 'react';
-import BookModal from "./bookModel.jsx";
+import BookModal from "./bookModel/bookModel.jsx";
 
 const ItemType = 'ITEM';
 

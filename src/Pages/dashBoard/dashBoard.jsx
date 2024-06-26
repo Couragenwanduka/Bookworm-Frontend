@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import DraggableBook from './dragable';
+import DraggableBook from './dragable.jsx';
 import { DndProvider } from 'react-dnd';
 import EditModal from "./editModel.jsx";
 import DroppableArea from "./dropable.jsx";
 import { saveBook } from './dashboards.js';
 import { getSavedBook } from './dashboards.js';
 import { useUser } from '../../hooks/action.jsx';
-import NavBar from "../../components/nav/navBar";
+import NavBar from "../../components/nav/navBar.jsx";
 import { getBookFunction } from './dashboards.js';
 import { MdModeEditOutline } from "react-icons/md";
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import SideBar from "../../components/sideBar/sideBar";
+import SideBar from "../../components/sideBar/sideBar.jsx";
 
 const DashBoard = () => {
   const [books, setBooks] = useState([]);
