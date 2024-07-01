@@ -28,7 +28,8 @@ export const theme = {
       aiDiv:'#264246',
       arrowBgColor:'#395255',
       bgAi:'#275A97',
-      serverBg:'#20393C'
+      serverBg:'#20393C',
+      divLine:'#466165'
       
 
     },

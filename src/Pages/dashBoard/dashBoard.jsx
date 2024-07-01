@@ -14,15 +14,15 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import SideBar from "../../components/sideBar/sideBar.jsx";
 
 const DashBoard = () => {
+  const { userDetails } = useUser(); 
   const [books, setBooks] = useState([]);
-  const [savedBooks, setSavedBooks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeCategory, setActiveCategory] = useState("popular");
+  const [categorys, setCategory] = useState([]);
+  const [savedBooks, setSavedBooks] = useState([]);
   const [divContents, setDivContents] = useState([]);
   const [groupedBooks, setGroupedBooks] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [categorys, setCategory] = useState([]);
-  const { userDetails } = useUser(); 
+  const [activeCategory, setActiveCategory] = useState("popular");
   const id = userDetails._id
 
   const categories = [
