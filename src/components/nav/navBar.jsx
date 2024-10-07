@@ -1,34 +1,42 @@
 import { CiSearch } from "react-icons/ci";
 import { IoMicOutline } from "react-icons/io5";
+import book from '../../Images/Icons/book-saved.svg';
+import notification from '../../Images/Icons/notification.svg';
+import person from '../../Images/Icons/person.svg';
+import downArrow  from '../../Images/Icons/downArrow.svg'
 
 const NavBar = () => {
-    return(
-        <div className="flex bg-teal-950 ml-40 mt-custom-for-nav ">
-            <div className="flex ml-5 mt-10 border w-32 h-10 border-borderColor2 border-1 rounded-lg items-center mr-9">
-                <span className="text-white font-inter ml-6"> Basic</span>
-                <span className="text-borderColor2 ml-5 text-2xl  mt-custom-for-nav-unicode ">&#x2304;</span>
-            </div>
-            <div className="relative  mt-10 mb-8 bg-customDivColor rounded  w-6/12">
-                <input 
-                    type="text"
-                    placeholder="Search in basic form"
-                    className="h-10  pl-10  rounded-lg border border-transparent focus:outline-none focus:border-blue-500 bg-customDivColor"
-                />
-                <CiSearch className="absolute left-3 top-2 text-gray-400 text-2xl font-bold w-5" /> 
-                <IoMicOutline className="absolute right-3 top-2 text-gray-400   text-xl" />
-                </div>
+    return (
+        <main className="flex justify-end">
+           <section className=" w-full h-38  bg-primaryColor flex justify-between items-center p-10" >
+               <section className="flex w-full gap-5">
+                    <section className="flex justify-center items-center w-32  h-10 gap-4 rounded-md border border-[#A0A2A3] font-inter text-white " >
+                            <h1>Basic</h1>
+                        <img src={downArrow} />
+                    </section>
+                    <section className="flex w-[65%]  h-10 border  border-[#283F43] font-inter rounded-md justify-between items-center text-white p-4 bg-[#27373A] ">
+                            <CiSearch /> 
+                            <input 
+                                type="text"
+                                placeholder="Search in basic form"
+                                className="w-full h-10 bg-transparent focus:outline-none ml-2"
+                            />
+                            <IoMicOutline />
+                    </section>
+                </section>
 
-            <div className="flex ml-40">
-                <span className="flex mt-12 flex-1 ml-5">
-                <img src="src\assets\book-saved.png" className="w-5 h-5 mr-7"/>
-                <img src="src\assets\notification.png" className="w-5 h-5"/>
-                </span>
-                <span className="bg-white rounded-xl w-7 h-7 flex justify-center items-center mt-11 ml-5 relative">
-                <img src="src/assets/profile.png" className="w-6 h-6" />
-                </span>
-            </div>
-        </div>
+                <section className="flex justify-between items-center gap-16 mr-8">
+                        <span className="flex gap-2">
+                            <img src={book} className="w-6 h-6" />
+                            <img src={notification} className="w-6 h-6" />
+                        </span>
+                        <span>
+                            <img src={person} className="w-10 h-10" />
+                        </span>
+                </section>
+           </section>
+        </main>
     )
 }
 
-export default NavBar
+export default NavBar;

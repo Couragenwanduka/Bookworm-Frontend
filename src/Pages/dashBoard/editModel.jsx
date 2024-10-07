@@ -25,7 +25,7 @@ const EditModal = ({ isOpen, onRequestClose, category }) => {
       contentLabel="Edit Category Modal"
       ariaHideApp={false}
     >
-      <div className='bg-div6Color h-full rounded-md'>
+      <div className='bg-white bg-opacity-35 h-full rounded-md'>
         <div className='text-customTextColor ml-5 text-lg font-inter pt-3 flex  border-none'>
             <BiSolidCategory  className='mr-2 mt-1'/>
             Rename

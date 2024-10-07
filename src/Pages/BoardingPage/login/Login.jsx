@@ -8,6 +8,11 @@ import { showSuccessToast, showErrorToast } from './login';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useUser } from '../../../hooks/action'
+import Logo from '../../../Images/Icons/Logo.svg';
+import Dot from '../../../Images/Icons/Dot.svg';
+import Reading from '../../../Images/assets/Reading2.png';
+import { useNavigate } from 'react-router-dom'
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +21,7 @@ const Login = () => {
   const [response, setResponse] = useState('');
   const [user, setUser] = useState('');
   const {  setUserDetails } = useUser(); 
+  const navigate = useNavigate();
   
   
 
@@ -44,63 +50,73 @@ const Login = () => {
     }
   }, [response, user, setUserDetails]);
 
-  return (
-    <div className="flex">
-      <div className="bg-teal-950 flex-1 h-custom-h3 p-10">
-        <img src="src/assets/Frame 63.png" alt="Frame" />
-        <h1 className="text-white text-xl font-normal font-inter mt-3">Create an account</h1>
-        <p className="text-customTextColor text-sm mt-2">Choose a preferred sign-up method</p>
-        <button className="flex items-center justify-center p-3 mt-4 bg-teal-950 border-customYellow border w-full text-black rounded">
+  return ( 
+    <main className="flex h-full font-inter">
+      <section className="bg-primaryColor flex-1 h-custom-h3 p-10 h-screen ">
+      <img src={Logo} alt="Frame"  onClick={()=>{navigate('/')}} className='cursor-pointer'/>
+        <h1 className="text-white text-xl font-normal font-inter mt-10">Login Into your Account</h1>
+        <p className="text-white text-opacity-50 text-sm mt-2">Welcome back! Choose a preferred login method</p>
+        <button className="flex items-center justify-center p-3 mt-4 bg-transparent border-secondaryColor border w-full text-secondaryColor rounded mb-5">
           <FcGoogle className="mr-2" /> Sign up with Google
         </button>
-        <p className="mt-3" id="or">Or</p>
-        <form className="mt-1 space-y-4" onSubmit={handleSubmit}>
-          <div className="flex items-center border border-borderColor py-3 rounded">
-            <MdOutlineEmail className="mr-2" />
-            <input
-              type="email"
-              placeholder="Email"
-              className="appearance-none bg-transparent border-none w-full text-white mr-5 py-1 px-2 leading-tight focus:outline-none"
-              aria-label="Email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
+        <p className="mt-3 text-white text-opacity-30" id="or">Or</p>
+        <form className="space-y-5 mt-5" onSubmit={handleSubmit}>
+        <div className="flex items-center border border-white border-opacity-30 h-12 rounded">
+              <MdOutlineEmail className="w-6 h-6 text-white text-opacity-50 ml-2" />
+              <input
+                  type="email"
+                  placeholder="Email"
+                  className="appearance-none bg-transparent border-none w-full text-white mr-5 py-1 px-2 leading-tight focus:outline-none"
+                  aria-label="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+              />
           </div>
-          <div className="relative-parent flex items-center border border-borderColor py-3 rounded relative">
-            <CiLock className="mr-2" />
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
-              aria-label="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="button" onClick={togglePasswordVisibility} className="absolute right-2 top-1/2 transform -translate-y-1/2">
-              {showPassword ? <FiEye /> : <FiEyeOff />}
-            </button>
+          <div className="relative-parent flex items-center  border border-white border-opacity-30 h-12 rounded relative">
+              <CiLock className="w-6 h-6 text-white text-opacity-50 ml-2" />
+              <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
+                  aria-label="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="button" onClick={togglePasswordVisibility} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white text-opacity-30">
+                  {showPassword ? <FiEye /> : <FiEyeOff />}
+              </button>
           </div>
-          <div className="flex">
-            <div className="text-customYellow flex-1">
-              <input type="checkbox" /> Remember me
+
+          <div className="flex justify-between font-inter font-thin">
+            <div className="text-customYellow flex justify-center items-center gap-3 text-secondaryColor">
+            <input 
+              type="checkbox" 
+              className="w-5 h-5 appearance-none bg-transparent checked:bg-transparent border-2 border-secondaryColor rounded checked:before:content-['✔'] checked:before:text-secondaryColor checked:before:text-[10px] checked:before:flex checked:before:justify-center checked:before:items-center" 
+            /> Remember me
+
             </div>
-            <div className="flex-1 lg:ml-80 text-customYellow">
+            <div className="flex text-secondaryColor">
               <button>Forgot password</button>
             </div>
           </div>
-          <button className="w-full bg-customYellow text-black py-2 rounded mt-4 font-bold">Login</button>
-          <p className="lg:ml-40 text-white font-normal text-l">Create an account? <span className="text-customYellow">Signup</span></p>
+
+          <button className="w-full bg-secondaryColor text-black py-2 rounded mt-4 ">Login</button>
+          <p className="lg:ml-40 text-white font-normal cursor-pointer" onClick={()=>{navigate('/signup')}}>Create an account? <span className="text-secondaryColor">Signup</span></p>
         </form>
         <ToastContainer />
-      </div>
-      <div className="hidden lg:flex lg:flex-1 bg-div3Color">
-        <div>
-          <img src="src/assets/Ellipse 18 (1).png" className="mt-10 ml-20" alt="Ellipse" />
-        </div>
-        <div className="text-center m-auto mt-96 mb-12">
-          <p className="text-2xl font-normal mt-12 ml-custom-h2 text-white mb-2">Let’s Get You Started</p>
-          <p className="mt-2 ml-custom-h2 text-customYellow text-sm mb-3">Open the pages to a world of free reads!</p>
-        </div>
-      </div>
-    </div>
+      </section>
+
+     <section className=" lg:flex lg:flex-1 flex-col justify-center items-center  bg-[#243F46] h-screen">
+                <div>
+                    <img src={Reading} className="" alt="Ellipse" />
+                </div>
+                <div className="text-center">
+                    <p className="text-2xl font-normal mt-10 text-white">Let’s Get You Started</p>
+                    <p className="mt-2 lg:ml-custom-h2 text-secondaryColor text-sm">Open the pages to a world of free reads!</p>
+                </div>
+                <div className='w-9 h-9 mt-5'>
+                   <img src={Dot}/>
+                </div>
+            </section>
+    </main>
   );
 };
 

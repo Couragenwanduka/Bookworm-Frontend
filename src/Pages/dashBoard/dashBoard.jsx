@@ -12,6 +12,9 @@ import { getBookFunction } from './dashboards.js';
 import { MdModeEditOutline } from "react-icons/md";
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import SideBar from "../../components/sideBar/sideBar.jsx";
+import dashboardImage from "../../Images/assets/dashboardImage.svg";
+import ReadBook from "../../Images/Icons/ReadBook.svg";
+import savedBook from "../../Images/Icons/savedBook.svg";
 
 const DashBoard = () => {
   const { userDetails } = useUser(); 
@@ -126,119 +129,124 @@ const DashBoard = () => {
   
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="bg-teal-950 overflow-clip h-screen">
-        <SideBar />
-        <NavBar />
-        <div className="flex ml-44 ">
-          <div className="flex flex-col  overflow-y-auto h-screen w-full">
-            <div className="bg-customDivColor flex justify-evenly rounded-xl w-full">
-              <span className="flex flex-col mr05">
-                <h1 className="text-white text-3xl text-warp inline-block w-60 font-inter mt-10  font-normal">
-                  Read free library Ebooks online
-                </h1>
-                <p className="text-customTextColor text-warp inline-block w-60  text-sm mt-2">
-                  Discover and read any book you can possibly think of!
-                </p>
-                <button className="bg-customYellow mt-5 w-20  rounded-md text-base font-semibold py-2 mb-5">
-                  Explore
-                </button>
-              </span>
-              <span>
-                <img src="src/assets/Group 1.png" alt="Illustration" className="w-60 mt-10 ml-20 mb-10 " />
-              </span>
-            </div>
-            <div className="mt-10">
-              <h1 className="text-white text-xl font-inter">Categories</h1>
-              <span className="flex justify-evenly mt-5 ml-custom-for-button font-inter text-base font-semibold w-full text-textColor ">
-                {categories.map((category) => (
-                  <button
-                    key={category.value}
-                    className={` w-20 p-2 rounded-xl ${activeCategory === category.value ? 'bg-customYellow text-black' : ''} `}
-                    onClick={() => handleCategoryChange(category.value)}
-                  >
-                    {category.label}
-                  </button>
-                ))}
-              </span>
-              <div className="grid grid-cols-4 gap-5 mt-6 w-full ">
-                {loading && <div className="col-span-3 "><img src="src/assets/Spinner@1x-1.0s-200px-200px (2).svg" className="" /></div>}
-                {!loading && books.map((book) => (
-                  <DraggableBook key={book.id} book={book} />
-                ))}
+      <div className="bg-primaryColor overflow-hidden h-screen flex ">
+        <SideBar  className={'w-[15%]'}/>
+        <section className="w-[85%]">
+            <NavBar />
+            <div className="flex ml-10 h-screen">
+              <div className="flex flex-col  overflow-y-auto h-screen w-full">
+
+                <div className="bg-[#27373A] flex  justify-evenly rounded-xl w-full">
+                  <span className="flex flex-col ">
+                    <h1 className="text-white text-4xl text-warp inline-block w-72 font-inter mt-10  font-normal">
+                      Read free library Ebooks online
+                    </h1>
+                    <p className="text-white text-opacity-30 text-warp inline-block w-60  text-sm mt-2">
+                      Discover and read any book you can possibly think of!
+                    </p>
+                    <button className="bg-secondaryColor mt-5 w-20  rounded-md text-base  py-2 mb-5">
+                      Explore
+                    </button>
+                  </span>
+                  <span>
+                    <img src={dashboardImage} alt="Illustration" className="w-60 mt-10 ml-20 mb-10 " />
+                  </span>
+                </div>
+
+                <div className="mt-10 mb-40">
+                  <h1 className="text-white text-xl font-inter">Categories</h1>
+                  <span className="flex justify-evenly mt-5 ml-custom-for-button font-inter text-base font-semibold w-full text-textColor ">
+                    {categories.map((category) => (
+                      <button
+                        key={category.value}
+                        className={` w-20 p-2 rounded-xl ${activeCategory === category.value ? 'bg-customYellow text-black' : ''} `}
+                        onClick={() => handleCategoryChange(category.value)}
+                      >
+                        {category.label}
+                      </button>
+                    ))}
+                  </span>
+                  <div className="grid grid-cols-4 gap-5 mt-6 w-full ">
+                    {loading && <div className="col-span-3 "><img src="src/assets/Spinner@1x-1.0s-200px-200px (2).svg" className="" /></div>}
+                    {!loading && books.map((book) => (
+                      <DraggableBook key={book.id} book={book} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col  -mt-4 overflow-y-scroll h-screen p-4 w-2/4">
+                <div className="flex">
+                  <span className="bg-[#27373A]  w-30 items-center rounded-xl">
+                    <img src={ReadBook} alt="Books Read Icon" className="ml-5 mt-3" />
+                    <p className="ml-5 text-white text-opacity-35 text-lg mr-5">Books Read</p>
+                    <p className="mt-5 ml-5 text-white text-4xl font-inter">0</p>
+                  </span>
+                  <span className="bg-[#27373A]  w-30 items-center rounded-xl ml-3">
+                    <img src={savedBook} alt="Books Saved Icon" className="ml-5 mt-3" />
+                    <p className="ml-5 text-white text-opacity-35 text-lg mr-5">Books Saved</p>
+                    <p className="mt-5 ml-5 text-white text-4xl font-inter mb-3">{savedBooks.length}</p>
+                  </span>
+                </div>
+                <div className="h-full mb-20">
+                  <span className="flex mt-5">
+                    <h1 className="text-white mr-10 font-normal text-2xl text-semibold ">My BookShelf</h1>
+                    <button className="text-2xl text-white font-inter mt-1 mb-0" onClick={addDiv}>{String.fromCharCode(0x002B)}</button>
+                  </span>
+                  <div  className=" rounded bg-[#27373A] h-full w-10/12 pt-3.5 pl-1">
+            {divContents.map((content, index) => (
+              <div key={index} className="ml-3">
+                {/* {content} */}
+                <DroppableArea onDrop={handleDrop} className='mt-4'/>
+                <span className="relative group">
+            <button className="hidden group-hover:flex absolute  left-32">
+              <MdModeEditOutline className="text-sm text-customYellow" />
+            </button>
+            <p className=" p-1 bg-slate-800 w-32 text-textColor2 text-sm font-inter font-semibold">New Bookshelf</p>
+            </span>
+              </div>
+              
+            ))}
+          <div className="flex flex-col w-10/12">
+        <div className="flex flex-col w-full ml-3 mb-12">
+      {Object.keys(groupedBooks).map((category) => (
+        <div key={category} className="flex flex-col">
+          <DroppableArea onDrop={handleDrop} />
+          <div className="flex overflow-x-auto w-64 ">
+            {groupedBooks[category].map((book) => (
+              <div key={book._id} className="flex-shrink-0 w-10">
+                <img
+                  src={book.image}
+                  alt={book.title}
+                  className="w-20 h-32 border-4 border-borderColor3"
+                />
+              </div>
+            ))}
+          </div>
+          <span className="relative group">
+            <button className="hidden group-hover:flex absolute  ml-28 mt-1"  onClick={() => handleCategoryClick(category)}>
+            <MdModeEditOutline className="text-sm text-customYellow" />
+            </button>
+            <p className="p-1 bg-div5Color w-32 text-textColor2 text-sm font-inter font-semibold">
+          {category}
+          </p>
+          <EditModal
+            isOpen={isModalOpen}
+            onRequestClose={closeModal}
+            category={categorys}
+          />
+            </span>
+        </div>
+      ))}
+    </div>
+          </div>
+          <span>
+          </span>
+          </div>        
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col  ml-0 mt-0 overflow-y-scroll h-screen p-4 w-2/4">
-            <div className="flex">
-              <span className="bg-customDivColor w-30 items-center rounded-md">
-                <img src="src/assets/Group 3.png" alt="Books Read Icon" className="ml-5 mt-3" />
-                <p className="ml-5 text-customTextColor text-lg mr-5">Books Read</p>
-                <p className="mt-5 ml-5 text-white text-4xl font-inter">0</p>
-              </span>
-              <span className="bg-customDivColor w-30 items-center rounded-md ml-3">
-                <img src="src/assets/Group 4.png" alt="Books Saved Icon" className="ml-5 mt-3" />
-                <p className="ml-5 text-customTextColor text-lg mr-5">Books Saved</p>
-                <p className="mt-5 ml-5 text-white text-4xl font-inter mb-3">{savedBooks.length}</p>
-              </span>
-            </div>
-            <div>
-              <span className="flex mt-5">
-                <h1 className="text-white mr-10 font-normal text-2xl text-semibold ">My BookShelf</h1>
-                <button className="text-2xl text-white font-inter mt-1 mb-0" onClick={addDiv}>{String.fromCharCode(0x002B)}</button>
-              </span>
-              <div  className=" rounded bg-div4Color h-full w-10/12 pt-3.5 pl-1">
-        {divContents.map((content, index) => (
-          <div key={index} className="ml-3">
-            {/* {content} */}
-            <DroppableArea onDrop={handleDrop} className='mt-4'/>
-            <span className="relative group">
-         <button className="hidden group-hover:flex absolute  left-32">
-          <MdModeEditOutline className="text-sm text-customYellow" />
-         </button>
-         <p className=" p-1 bg-div5Color w-32 text-textColor2 text-sm font-inter font-semibold">New Bookshelf</p>
-        </span>
-          </div>
-          
-        ))}
-       <div className="flex flex-col w-10/12">
-     <div className="flex flex-col w-full ml-3 mb-12">
-  {Object.keys(groupedBooks).map((category) => (
-    <div key={category} className="flex flex-col">
-      <DroppableArea onDrop={handleDrop} />
-      <div className="flex overflow-x-auto w-64 ">
-        {groupedBooks[category].map((book) => (
-          <div key={book._id} className="flex-shrink-0 w-10">
-            <img
-              src={book.image}
-              alt={book.title}
-              className="w-20 h-32 border-4 border-borderColor3"
-            />
-          </div>
-        ))}
-      </div>
-      <span className="relative group">
-         <button className="hidden group-hover:flex absolute  ml-28 mt-1"  onClick={() => handleCategoryClick(category)}>
-         <MdModeEditOutline className="text-sm text-customYellow" />
-         </button>
-         <p className="p-1 bg-div5Color w-32 text-textColor2 text-sm font-inter font-semibold">
-      {category}
-       </p>
-       <EditModal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        category={categorys}
-      />
-        </span>
-    </div>
-  ))}
-</div>
-      </div>
-      <span>
-      </span>
-      </div>        
-            </div>
-          </div>
-        </div>
+        </section>
+        
       </div>
     </DndProvider>
   );

@@ -1,187 +1,194 @@
-import ResponsiveSlider from "./slider";
-import {Link} from 'react-router-dom'
+import Logo from '../../Images/Icons/Logo.svg';
+import HeroPage from '../../Images/assets/HeroPage.svg';
+import BodyText from '../../components/Text/BodyText';
+import CardDiv from '../../components/Cards/div.jsx';
+import Ebook from '../../Images/Icons/Ebook.svg'
+import Book from '../../Images/Icons/Book.svg'
+import Note from '../../Images/Icons/Note.svg'
+import Ai from  '../../Images/Icons/Ai.svg'
+import Query from '../../Images/Icons/Query.svg'
+import Qiuz from '../../Images/Icons/Quiz.svg'
+import Laptop from '../../Images/Icons/Laptop.svg'
+import ResponsiveSlider from './slider.jsx';
+import About1 from '../../Images/assets/About1.png'
+import About2 from '../../Images/assets/About2.png'
+import LogoGrey from '../../Images/Icons/LogoGrey.svg'
+import social from '../../Images/Icons/socials.svg'
+import { useNavigate } from 'react-router-dom'
 
 
-const LandingPage=()=>{
-    return(
-        <>
-        <div className="bg-teal-950 mx-auto">
-        {/* The Header of the landing page */}
-            <div className="flex ... py-8   sm:flex-row bg-teal-950 ">
-                <div className="flex-1 ...  pl-10"><img src="src\assets\Frame 63.png"/></div>
-                <nav className="flex-1 hidden lg:contents">
-                    <ul className="flex ... text-white">
-                        <li className="flex-1 ..."><a href="#">Feature</a></li>
-                        <li className="flex-1 ... ml-10 w-40"><a href="#">About Us</a></li>
-                        <li className="flex-1 ... ml-10"><a href="#">Contact</a></li>
+
+const LandingPage = () => {
+    const navigate = useNavigate();
+    return (
+        <main className="bg-primaryColor">
+
+              <section className=' w-full md:h-38 h-20'>
+                   <div className=' w-full  flex justify-between items-center md:p-10 pt-5 pb-5 pl-2 pr-2  fixed bg-primaryColor z-10'>
+                        <div className='ml-3'>
+                                <img src={Logo}/>
+                            </div>
+                            <div className='gap-10 font-inter text-white text-[14px] cursor-pointer hidden md:flex'>
+                                <h1 className='border-b-2 border-transparent hover:border-secondaryColor'>Features</h1>
+                                <h1 className='border-b-2 border-transparent hover:border-secondaryColor'>About Us</h1>
+                                <h1 className='border-b-2 border-transparent hover:border-secondaryColor'>Contact</h1>
+                            </div>
+                            <div className=' flex gap-10 font-inter text-[14px]'>
+                                <button className='bg-secondaryColor pl-3 pr-3 pt-1 pb-1 rounded-md' onClick={()=>{navigate('/signup')}}>Sign Up</button>
+                                <button className='bg-transparent border border-secondaryColor pl-3 pr-3 pt-1 pb-1 rounded-md text-secondaryColor'  onClick={()=>{navigate('/signin')}}>Log In</button>
+                            </div>
+                   </div>
+              </section>
+
+              <section className='w-full h-full bg-[#27373A] flex flex-col md:flex-row p-4'>
+                <div className='h-full md:w-[50%] font-inter flex flex-col justify-center md:p-10 '>
+                    <h1 className='md:text-5xl text-4xl text-white font-semibold'>Ignite your learning </h1>
+                    <h1 className='md:text-5xl text-4xl text-white font-semibold'>journey with Bookworm</h1>
+                    <BodyText className={'  mt-5 break-words md:w-8/12'} content={'Immerse yourself in a world of literature like never before with our cutting-edge online eBook reader. Discover thousands of titles spanning genres, from timeless classics to the latest bestsellers, all at your fingertips.'}/>
+                    <button className='w-32 h-11 rounded-md mt-5 bg-secondaryColor'>Get Started</button>
+                </div>
+                <div className='h-full md:w-[50%]'>
+                    <img src={HeroPage} alt='hero-page' className='w-[75%] ml-[8%] h-full'/>
+                </div>
+              </section>
+
+              <section className='flex flex-col md:p-10 p-5 w-full h-full'>
+                    <h1 className='text-center font-inter text-white md:text-[20px] text-[14px] '>Access Free Ebooks, Organize Study Materials, and Master Your Subjects with AI-Powered Tools</h1>
+
+                    <div className=' md:grid-rows-4 lg:grid-cols-3 md:grid-cols-2 gap-10  mt-[4%] lg:ml-4 hidden md:grid '>
+                        <CardDiv image={Ebook} headerText={'Free Ebook Library'} text={'Access a vast collection of free ebooks from reputable online repositories.'}/>
+                        <CardDiv image={Book} headerText={' Bookshelf Organization'} text={'Create custom categories and organize ebooks for easy access and management. accessible location.'}/>
+                        <CardDiv image={Note} headerText={'Notetaking and Annotation'} text={'Take notes, highlight text, and annotate ebooks directly within the app.'}/>
+                        <CardDiv image={Ai} headerText={'AI-powered Summarization'} text={'Get concise summaries of ebooks to aid comprehension and time management.'}/>
+                        <CardDiv image={Query} headerText={'Book Query'} text={'Quickly find specific information within ebooks using AI-powered search functionality.'}/>
+                        <CardDiv image={Qiuz} headerText={'Custom Quiz Creation'} text={'Generate quizzes based on ebook content to test understanding and prepare for exams.'}/>
+                          
+                    </div>
+                    <div className=' gap-10  mt-[4%] lg:ml-4  md:hidden flex flex-col items-center '>
+                        <CardDiv image={Ebook} headerText={'Free Ebook Library'} text={'Access a vast collection of free ebooks from reputable online repositories.'}/>
+                        <CardDiv image={Book} headerText={' Bookshelf Organization'} text={'Create custom categories and organize ebooks for easy access and management. accessible location.'}/>
+                        <CardDiv image={Note} headerText={'Notetaking and Annotation'} text={'Take notes, highlight text, and annotate ebooks directly within the app.'}/>
+                        <CardDiv image={Ai} headerText={'AI-powered Summarization'} text={'Get concise summaries of ebooks to aid comprehension and time management.'}/>
+                        <CardDiv image={Query} headerText={'Book Query'} text={'Quickly find specific information within ebooks using AI-powered search functionality.'}/>
+                        <CardDiv image={Qiuz} headerText={'Custom Quiz Creation'} text={'Generate quizzes based on ebook content to test understanding and prepare for exams.'}/>
+                          
+                    </div>
+              </section>
+
+              <section className='w-full h-full relative md:-mt-[30%] md:bg-primaryColor bg-[#653F00] '>
+                <div className='md:-top-24 top-72 absolute  bg-[#653F00] md:bg-transparent'>
+                     <img src={Laptop}/>
+                </div>
+                <div className='bg-[#653F00] w-full md:h-80  text-center flex flex-col justify-center items-center text-white font-inter pb-10 md:pb-0'>
+                   <div className='md:ml-[35rem] mt-2 md:mt-0'>
+                        <div>
+                                <div className='text-left'>
+                                <h1 className='text-2xl font-medium'>Unlock your </h1>
+                                <h1 className='text-2xl font-medium'> full study potential</h1>
+                            </div>
+                            <ul className="text-white text-opacity-65 text-[14px] mt-5">
+                                <li className="flex items-start">
+                                    <span className="mr-2">•</span> Browse the Ebook Library
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-2">•</span> Organize Your Bookshelf
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-2">•</span> Take Notes and Annotate
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-2">•</span> Access AI-Powered Tools
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-2">•</span> Ace Your Exams with Custom Quizzes
+                                </li>
+                            </ul>
+                            <div className='flex items-center w-52'>
+                                <button className='w-32 h-11 rounded-md mt-5 bg-secondaryColor text-black items-start' >Get Started</button>
+                            </div>
+                            </div>
+                   </div>
+                </div>
+              </section>
+              <section className='bg-primaryColor mt-60 h-full w-full hidden md:block'>
+                 <ResponsiveSlider/>
+              </section>
+
+              <section>
+                <div className='grid md:grid-cols-2 gap-2 md:gap-0 w-full h-full md:p-14 p-4 bg-[#27373A] md:mt-20 mt-72'>
+                    <div className='flex flex-col gap-7 font-inter md:w-[90%] w-full justify-center'>
+                         <h1 className='text-white text-[20px]'> About Us </h1>
+                        <BodyText  content={"At Bookworm, we are passionate about revolutionizing the way students learn and study. Founded by Sophia Abubakar, a dedicated educator with a vision for leveraging technology to enhance education, Bookworm is the culmination of years of research and development aimed at addressing the challenges students face in managing their study resources effectively."}/>
+                        <BodyText className={'md:hidden lg:block'} content={"Our team comprises experienced developers, designers, and educators who share a common goal: to empower students of all ages and disciplines to excel academically. We understand the struggles students encounter when trying to juggle multiple textbooks, notes, and study materials. That's why we've created Bookworm - your all-in-one study buddy designed to streamline your study process and maximize your learning potential."}/>
+                    </div>
+                    <div>
+                        <img src={About1} alt='about1' className='w-[90%]'/>
+                        
+                    </div>
+                    <div>
+                        <img src={About2} alt='about2' className='w-[90%] mt-5'/>
+                    </div>
+                    <div className='flex flex-col gap-7 font-inter md:w-[90%] justify-center'>
+                        <h1 className='text-white text-[20px]'>Our Mission</h1>
+                        <BodyText content={"Bookworm's mission is simple yet powerful: to provide students with a comprehensive and user-friendly platform that simplifies the study experience and fosters academic success. We believe that every student deserves access to high-quality educational resources and tools that facilitate learning and comprehension."}/>
+                         <BodyText className={'md:hidden lg:block'} content={"Our commitment to excellence is reflected in every aspect of our platform, from the intuitive user interface to the cutting-edge AI-powered features. We strive to stay at the forefront of technological innovation, continuously improving and expanding Bookworm's capabilities to meet the evolving needs of students worldwide."}/>
+                    </div>
+
+                </div>
+              </section>
+              
+
+            <section className='mt-20 md:flex w-full h-full bg-[#192E31] md:p-10 '>
+                <div className='md:w-[50%] h-full mt-6'>
+                    <h1 className='text-white text-xl font-inter ml-6 md:ml-0'>Why Choose Bookworm:</h1>
+                    <ul className='flex flex-col gap-5 mt-5 text-white  ml-6 md:ml-0'>
+                        <l1 className="flex items-start">
+                            <span className="mr-2">•</span>
+                            <BodyText className={'break-words w-[90%]'} content={"Comprehensive Study Solutions: Whether you're looking for free ebooks, tools for organizing study materials, or AI-powered assistance with summarization and quiz creation, Bookworm has you covered."}/>
+                        </l1>
+                        <l1 className="flex items-start">
+                            <span className="mr-2">•</span>
+                            <BodyText className={'break-words w-[90%]'} content={"Personalized Learning Experience: We understand that every student learns differently. That's why Bookworm offers customizable features that adapt to your unique learning style and preferences."}/>
+                        </l1>
+                        <l1 className="flex items-start">
+                            <span className="mr-2">•</span>
+                            <BodyText  className={'break-words w-[90%]'} content={"Trusted by Students and Educators: Bookworm has earned rave reviews from students, educators, and educational institutions alike. Join the thousands of users who have already transformed their study routine with Bookworm."}/>
+                        </l1>
                     </ul>
-                </nav>
-                <div className="flex-1 ... ml-20" id="btnDiv">
-                    <Link to={'sign-up'}>
-                    <button  id="signBtn">Sign Up</button>
-                    </Link>
-                    <Link to={'sign-in'}>
-                    <button id="logBtn">Log In</button>
-                    </Link>
                 </div>
-            </div>
-            {/* The hero Section begins here */}
-            <div className="flex h-2/5 " id="hero">
-                <div>
-                    <span className="text-wrap inline-block w-3/5 flex flex-col">
-                        <h1 className="text-white pt-10 pl-20 text-3xl font-normal">Ignite your learning journey with Bookworm</h1>
-                        <p className="text-white pt-10 pl-20" id="heroText">Immerse yourself in a world of literature like never before with our cutting-edge online eBook reader. 
-                        Discover thousands of titles spanning genres, from timeless classics to the latest bestsellers, 
-                        all at your fingertips.</p>
-                    </span>
-                    <span>
-                        <button className="mt-10 mb-20 ml-20 bg-customYellow p-2 rounded px-5">Get Started</button>
-                    </span>
-                </div>
-                <div className="mr-40 mt-10 mb-10">
-                    <img src="src\assets\Frame 34691.png" className="w-custom-w2 h-custom-h2"/>
-                </div>
-            </div>
-            {/* The about Section begins here */}
-               <div className="flex flex-col ">
-                <h1 className="text-center mt-20 mb-20 text-white font-inter font-normal">Access Free Ebooks, Organize Study Materials, and Master Your Subjects with AI-Powered Tools</h1>
-                <div className="flex-col lg:flex  lg:flex-row">
-                    <div className="bg-customDivColor ml-20 w-80 h-60 rounded-xl">
-                        <span>
-                            <img src="src\assets\Ellipse 22.png" className="w-20 ml-24 mt-5"/>
-                        </span>
-                        <p className="text-white text-center">Free Ebook Library</p>
-                        <p className="text-warp inline-block w-4/5 ml-10 text-customTextColor">Access a vast collection of free ebooks from reputable online repositories.</p>
+                <div className='bg-[#101B11] flex flex-col rounded-lg md:w-[50%] h-full  w-full'>
+                    <h1 className='text-white text-xl font-inter mt-6 ml-6'>Join the Bookworm Community:</h1>
+                    <div className='mt-10 ml-6 flex flex-col gap-5'>
+                        <BodyText className={'md:break-words md:w-[90%]'} content={"Ready to take your study routine to the next level? Join the Bookworm community today and embark on a journey of academic excellence. Whether you're a high school student preparing for exams or a college student tackling complex course materials or just a book lover, Bookworm is here to support you every step of the way."}/>
+                        <BodyText  className={'break-words w-[90%]'} content={"Together, let's unlock the power of knowledge and unleash your full potential with Bookworm."}/>
                     </div>
-                    <div className="bg-customDivColor ml-20 w-80 h-60 rounded-xl">
-                        <span>
-                            <img src="src\assets\Ellipse 23.png" className="w-20 ml-24 mt-5"/>
-                        </span>
-                        <p className="text-white text-center">Bookshelf Organization</p>
-                        <p className="text-warp inline-block w-4/5 ml-10 text-customTextColor">Create custom categories and organize ebooks for easy access and management.</p>
+                    <button className='bg-secondaryColor w-32 h-10 ml-6 mt-6 rounded-md mb-6'>Sign In</button>
+                </div>
+            </section>
+
+            <section className='bg-[#0E100E] text-white font-inter text-opacity-45'>
+                <div className='md:flex justify-between p-10 '>
+                    <div className='flex flex-col gap-2'>
+                        <img src={LogoGrey} alt='footer' className='w-full'/>
+                        <img src={social} alt='social' className='w-20 h-20'/>
                     </div>
-                    <div className="bg-customDivColor ml-20 w-80 h-60 rounded-xl">
-                        <span>
-                            <img src="src\assets\Ellipse 24.png" className="w-20 ml-24 mt-5"/>
-                        </span>
-                        <p className="text-white text-center">Note taking and Annotation</p>
-                        <p  className="text-warp inline-block w-4/5 ml-10 text-customTextColor">Take notes, highlight text, and annotate ebooks directly within the app.</p>
+                    <div className='md:flex  gap-60 mr-2'> 
+                        <div className='flex flex-col gap-2'>
+                            <h1>contact@bookwormapp.com</h1>
+                            <p>234-709-892-1741</p>
+                        </div>
+                        <div className='flex flex-col gap-2'>
+                            <h1>Privacy Policy</h1>
+                            <p>Terms of Service</p>
+                        </div>
                     </div>
                 </div>
-                <div className="flex  flex-col mt-10 lg:flex lg:flex-row">
-                <div className="bg-customDivColor ml-20 w-80 h-60 rounded-xl">
-                       <span>
-                            <img src="src\assets\Ellipse 22 (1).png" className="w-20 ml-24 mt-5"/>
-                        </span>
-                        <p className="text-white text-center">AI-powered Summarization</p>
-                        <p className="text-warp inline-block w-4/5 ml-10 text-customTextColor">Get concise summaries of ebooks to aid comprehension and time management.</p>
-                    </div>
-                    <div className="bg-customDivColor ml-20 w-80 h-60 rounded-xl mt-5 lg:mt-0">
-                        <span>
-                            <img src="src\assets\Ellipse 23 (1).png" className="w-20 ml-24 mt-5"/>
-                        </span>
-                        <p className="text-white text-center">Book Query</p>
-                        <p className="text-warp inline-block w-4/5 ml-10 text-customTextColor">Quickly find specific information within ebooks using AI-powered search functionality.</p>
-                    </div>
-                    <div className="bg-customDivColor ml-20 w-80 h-60 rounded-xl mt-5 lg:mt-0">
-                        <span>
-                            <img src="src\assets\Ellipse 24 (1).png" className="w-20 ml-24 mt-5"/>
-                        </span>
-                        <p className="text-white text-center">Custom Quiz Creation</p>
-                        <p className="text-warp inline-block w-4/5 ml-10 text-customTextColor">Generate quizzes based on ebook content to test understanding and prepare for exams.</p>
-            
+                <div className='text-center pb-10'>
+                © 2024 Bookworm. All rights reserved
                 </div>
-               </div>
-               </div>
-               {/* Unlock your full study potential */}
-               <div className="flex flex-col bg-customBgColor mt-40 h-3/6 lg:flex lg:flex-row lg:h-72"> 
-                <div className="flex-1">
-                    <img src="src/assets\Group 5358.png" className="h-96 mt-custom-m  w-custom-w lg:ml-24"/>
-                </div>
-                <div className="flex-1 ml-20">
-                    <p className="text-white font-normal font-inter text-3xl text-warp inline-block w-52 mt-10">Unlock your full study potential</p>
-                    <ul className="text-customTextColor list-disc ml-5 mt-5 text-sm">
-                        <li>Browse the Ebook Library</li>
-                        <li>Organize Your Bookshelf</li>
-                        <li>Take Notes and Annotate</li>
-                        <li>Access AI-Powered Tools</li>
-                        <li>Ace Your Exams with Custom Quizzes</li>
-                    </ul>
-                    <button className="mt-5" id="signBtn">Get Started</button>
-                </div>
-               </div>
-               {/* Don’t take our word for it */}
-               <div className="flex flex-col lg:ml-20">
-                <h1 className="ml-10 text-3xl mt-40 text-white font-normal font-inter lg:ml-96">Don’t take our word for it</h1>
-                <p className="ml-10 text-customTextColor text-xs lg:ml-96">Here’s what our users are saying about Bookworm</p>
-               </div>
-               <div>
-               <ResponsiveSlider/>
-               </div>
-               
-               {/* our Mission */}
-               <div className="flex flex-col bg-customDivColor mt-10 lg:flex-row">
-                <div className="mt-10">
-                <h1 className="text-white text-xl font-normal font-inter ml-20">About Us</h1>
-                    <span >
-                    <p className="text-customTextColor text-warp inline-size w-2/3 ml-20 mt-5 text-sm">At Bookworm, we are passionate about revolutionizing the way students learn and study. Founded by Sophia Abubakars,
-                         a dedicated educator with a vision for leveraging technology to enhance education, Bookworm is the culmination of years of research 
-                        and development aimed at addressing the challenges students face in managing their study resources effectively</p>
-                    <p className="text-customTextColor text-warp inline-size w-2/3 ml-20 mt-5 text-sm">Our team comprises experienced developers, designers, and educators who share a common goal: to empower students of all
-                         ages and disciplines to excel academically. We understand the struggles students encounter when trying to juggle multiple textbooks, notes, and 
-                        study materials. Thats why we ve created Bookworm - your all-in-one study buddy designed to streamline your study process and maximize your learning potential.</p>
-                    </span>
-                    <img src="src\assets\Rectangle 756.png" className="w-96 mt-20 ml-5 lg:ml-20"/>
-                </div>
-                <div className="lg:ml-custom-h mb-20 ml-5">
-                    <img src="src\assets\Rectangle 755.png" className="w-96 mt-24  lg:ml-0"/>
-                    <span className="ml-custom-h">
-                        <h1 className="text-white text-xl font-normal font-inter mt-10">Our Mission</h1>
-                        <p className="text-customTextColor text-warp inline-size w-11/12 mt-5 text-sm">Bookworms mission is simple yet powerful: to provide students with a comprehensive and user-friendly platform 
-                            that simplifies the study experience and fosters academic success. We believe that every student deserves access to 
-                            high-quality educational resources and tools that facilitate learning and comprehension.
-                        </p>
-                        <p className="text-customTextColor text-warp inline-size w-11/12  mt-5 text-sm">
-                        Our commitment to excellence is reflected in every aspect of our platform, from the intuitive user interface 
-                        to the cutting-edge AI-powered features. We strive to stay at the forefront of technological innovation, continuously
-                         improving and expanding Bookworms capabilities to meet the evolving needs of students worldwide.
-                        </p>
-                    </span>
-                </div>
-               </div>
-               {/* why us */}
-               <div className="flex lg:flex-row flex-col">
-                <div className="mt-20 ml-20 flex-1"> 
-                 <h1 className="text-white text-xl font-normal font-inter ">Why Choose Bookworm:</h1>
-                 <ul className="text-customTextColor list-disc ml-10 mt-5 text-sm">
-                    <li>Comprehensive Study Solutions: Whether you re looking for free ebooks, tools for organizing study materials, or AI-powered assistance with summarization and quiz creation, Bookworm has you covered.</li>
-                    <li>Award-Winning AI-Powered Tools: Bookworms AI-powered tools, such as summarization, quiz creation, and note-taking and annotation, are designed to help students improve their comprehension and prepare for exams.</li>
-                    <li>Customizable Features: Bookworms intuitive user interface allows you to customize your study experience to meet your unique learning needs.</li>
-                 </ul>
-                </div>
-                <div className="bg-divColor lg:w-3/6 mt-10 flex-1 ml-10 mr-10 rounded-xl mb-10">
-                  <h1 className="mt-5 ml-10 text-white text-lg mb-10 font-inter">Join the Bookworm Community:</h1>
-                  <p className="text-customTextColor text-sm ml-10 mr-10">Ready to take your study routine to the next level? Join the Bookworm community today and embark on a journey of academic excellence. Whether you re a high school student preparing for exams or a college student tackling complex course materials or just a book lover, Bookworm is here to support you every step of the way.</p>
-                  <p className="text-customTextColor text-sm ml-10 mt-5 mr-10" > Together, lets unlock the power of knowledge and unleash your full potential with Bookworm.</p>
-                  <button className="bg-customYellow px-10 mt-10 mb-10 ml-10 py-1 rounded font-normal">Sign up</button>
-                </div>
-               </div>
-               <div className="bg-div2Color">
-                <div className="flex mt-10 mb-10">
-                <span className="flex-1 ml-10 mt-10">
-                    <img src="src\assets\Frame 34727.png"/>
-                </span>
-                <span className="flex-1 mt-10">
-                    <img src='src\assets\Frame 34726.png'/>
-                </span>
-                </div>
-                <span className="text-customTextColor">
-                    <p className="mt-10 lg:ml-96  ">© 2024 Bookworm. All rights reserved</p>
-                </span>
-               </div>
-        </div>
-        </>
+            </section>
+        </main>
     )
 }
 
-export default LandingPage
+export default LandingPage;

@@ -1,10 +1,11 @@
 import axios from 'axios';
-const base= 'http://localhost:7000';
+const base= 'http://localhost:8000';
 
 
 export const getBookFunction = async (genre) => {
    try{
         const response = await axios.get(`${base}/books/${genre}`)
+        console.log(response);  // display data in console
         return response.data.data.results;
        } catch (error) {
         console.log(error);

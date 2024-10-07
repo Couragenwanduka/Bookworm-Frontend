@@ -14,8 +14,8 @@ function ROUTER() {
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="sign-up" element={<SignUp />} />
-        <Route path="sign-in" element={<Login />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="signin" element={<Login />} />
         <Route path="forgotPassword" element={<ForgotPassword />} />
         <Route path="verify-otp" element={<Verify />} />
         <Route path="restpassword" element={<RestPassword />} />

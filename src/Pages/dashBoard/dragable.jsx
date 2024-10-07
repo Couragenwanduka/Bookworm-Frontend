@@ -41,10 +41,10 @@ const DraggableBook = ({ book }) => {
         onRequestClose={closeBookModal}
         book={selectedBook}
       />
-      <div>
+      <div className='flex flex-col justify-center'>
         <p className="text-white font-semibold text-warp inline-block w-36 text-base truncate hover:whitespace-normal">{book.title}</p>
         {book.authors && book.authors.length > 0 && (
-          <p className="text-customTextColor text-warp inline-block w-40 text-sm">{book.authors[0].name}</p>
+          <p className="text-white text-opacity-35 text-warp inline-block w-40 text-sm">{book.authors[0].name}</p>
         )}
       </div>
     </div>
