@@ -7,6 +7,12 @@ import { Link } from 'react-router-dom';
 import CustomTabs from './bookModel2';
 import { customStylesForBookModal } from '../dashboards';
 import { SaveBookToLocalStorage } from '../../../hooks/book.hook';
+import start from '../../../Images/Icons/Star 4.svg';
+import openBook from '../../../Images/Icons/open-book-book_svgrepo.com.svg';
+import timer from '../../../Images/Icons/timer.svg';
+import  british from '../../../Images/Icons/british-indian-ocean-territory_svgrepo.com.svg'
+import leading from '../../../Images/Icons/Leading Icon (1).svg';
+import listen from '../../../Images/Icons/listen.svg'
 
 const BookModal = ({ isOpen, onRequestClose, book }) => {
   const [text, setText] = useState('');
@@ -60,7 +66,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
     >
       <div className="mt-1 overflow-y-scroll h-screen">
         <div
-          className="ml-52 text-customTextColor font-inter text-2xl mb-3 cursor-pointer"
+          className="ml-52 text-white text-opacity-45 font-inter text-3xl font-thin mb-3 cursor-pointer"
           onClick={onRequestClose}
         >
           <p className="ml-96">X</p>
@@ -90,7 +96,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
               <span className="flex-1">
                 <span className="flex">
                   <img
-                    src="src/assets/Star 4.png"
+                    src={start}
                     alt="Star"
                     className="w-4 h-4 mt-1"
                   />
@@ -103,7 +109,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
               <span className="flex-1">
                 <span className="flex">
                   <img
-                    src="src/assets/Group (1).png"
+                    src={openBook}
                     alt="Group"
                     className="w-4 h-4 mt-1"
                   />
@@ -116,7 +122,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
               <span className="flex-1">
                 <span className="flex">
                   <img
-                    src="src/assets/timer.png"
+                    src={timer}
                     alt="Timer"
                     className="w-4 h-4 mt-1"
                   />
@@ -129,7 +135,7 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
               <span className="flex-1">
                 <span>
                   <img
-                    src="src/assets/british-indian-ocean-territory_svgrepo.com.png"
+                    src={british}
                     alt="Flag"
                     className="w-4 h-4 mt-1"
                   />
@@ -143,25 +149,25 @@ const BookModal = ({ isOpen, onRequestClose, book }) => {
                 0%
               </p>
             </div>
-            <div className="mt- flex">
+            <div className=" flex gap-4">
               <Link to={'/read-book'}>
-                <span className="flex flex-1 bg-customYellow p-2 rounded gap-2 cursor-pointer">
-                  <img src="src/assets/Leading Icon.png" alt="Read Icon" />
-                  <p className="font-inter font-semibold">Read Book</p>
+                <span className="flex  bg-secondaryColor text-[#AE8138]  w-36 h-10 justify-center items-center rounded gap-2 cursor-pointer">
+                  <img src={leading} alt="Read Icon" />
+                  <p className="font-inter">Read Book</p>
                 </span>
               </Link>
-              <span className="flex flex-1 border border-customYellow ml-3 items-center rounded cursor-pointer">
+              <span className="flex  border border-secondaryColor gap-3  w-36 h-10 items-center  justify-center rounded cursor-pointer">
                 <img
-                  src="src/assets/Leading Icon (2).png"
+                  src={listen}
                   alt="Listen Icon"
-                  className="w-5 h-5 ml-3"
+                  // className="w-5 h-5"
                 />
-                <p className="text-customYellow font-inter font-semibold ml-2">
+                <p className="text-[#AE8138] font-inter ">
                   Listen
                 </p>
               </span>
-              <span className="flex-1 cursor-pointer">
-                <p className="ml-10 mt-3 font-inter font-semibold text-customYellow">
+              <span className=" cursor-pointer flex justify-center items-center">
+                <p className="ml-10  font-inter font-semibold text-[#AE8138]">
                   Download
                 </p>
               </span>

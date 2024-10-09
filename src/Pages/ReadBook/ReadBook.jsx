@@ -11,6 +11,7 @@ import { FaSquareShareNodes } from "react-icons/fa6";
 import { GiArtificialIntelligence } from "react-icons/gi"
 import { getText, getChapter } from '../dashBoard/dashboards';
 import { SaveBookToLocalStorage } from '../../hooks/book.hook';
+import Logo from '../../Images/Icons/Logo.svg'
 
 const ReadBook = () => {
     const [currentChapter, setCurrentChapter] = useState({ chapterNumber: 1, chapterContent: '', totalChapters: 0 });
@@ -72,6 +73,16 @@ const ReadBook = () => {
         }
     };
 
+    const formatMessage = (message) => {
+        // Ensure message is a valid string before processing
+        if (typeof message !== 'string') {
+          return ''; // Return an empty string or a fallback message if it's null or not a string
+        }
+      
+        return message.replace(/\*/g, ''); // Replace **text** with <strong>text</strong>
+      };
+      
+
     useEffect(() => {
         document.addEventListener('mouseup', handleMouseUp);
         document.addEventListener('click', handleDocumentClick);
@@ -82,26 +93,26 @@ const ReadBook = () => {
     }, []);
 
     return (
-        <div className='bg-teal-950 fixed'>
-            <div className='flex border-b border-customTextColor h-20 w-full'>
-                <img src={'src/assets/Frame 63.png'} alt="Frame" className='mt-5 m-10 h-10'/>
+        <div className='bg-primaryColor fixed'>
+            <div className='flex border-b border-white border-opacity-40 h-20 w-full'>
+                <img src={Logo} alt="Frame" className='mt-5 m-10 h-10'/>
                 <p className='mt-7 ml-10 text-white text-xl font-inter text-warp inline-block w-2/4 truncate'>{bookDetails?.title}</p>
                 <Link to={'/dashboard'}>
-                    <p className='ml-28 mt-7 text-white text-xl cursor-pointer'>X</p>
+                    <p className='ml-28 mt-7 text-white text-xl font-thin cursor-pointer'>X</p>
                 </Link>
             </div>
             <div className='flex'>
                 {/* Table of Contents */}
-                <div className='w-60 h-screen bg-div3Color'>
+                <div className='w-60 h-screen bg-[#243F46]'>
                     <p className='text-white ml-10 mt-10 text-base font-normal font-inter mb-5'>Table of Contents</p>
                     {[...Array(currentChapter.totalChapters).keys()].map(index => (
-                        <div key={index} className='flex flex-col mt-4'>
-                            <h3 className='ml-10 text-customTextColor text-lg font-extrabold'>Chapter {index + 1}</h3>
+                        <div key={index} className='flex flex-col mt-4 gap-6'>
+                            <h3 className='ml-10 text-secondaryColor text-lg font-extrabold'>Chapter {index + 1}</h3>
                         </div>
                     ))}
                 </div>
                 {/* Main content area for chapter content */}
-                <div className='w-3/4 text-warp inline-block w-7/12 mt-1 overflow-y-auto h-screen' ref={textRef}>
+                <div className=' text-warp inline-block w-9/12 mt-1 overflow-y-auto h-screen' ref={textRef}>
                     {isLoading ? (
                         <div className="col-span-5 h-screen ml-96 mt-40 w-screen">
                             <img src={'src/assets/Spinner@1x-1.0s-200px-200px (2).svg'} alt="Loading spinner" />
@@ -109,13 +120,13 @@ const ReadBook = () => {
                     ) : (
                         <div className='ml-10'>
                             <p className='ml-96 mb-20 mt-10 text-white font-inter text-2xl font-normal'>{`Chapter ${currentChapter.chapterNumber}:`}</p>
-                            <p className='text-warp inline-block w-11/12 ml-10 text-customTextColor text-lg font-inter'>{currentChapter.chapterContent}</p>
+                            <p className='text-warp inline-block w-11/12 ml-10 text-white text-opacity-45 text-lg font-inter'>{formatMessage(currentChapter.chapterContent)}</p>
                         </div>
                     )}
                     {/* Pagination controls */}
                     <div className='mb-32 ml-96 mt-10'>
-                        <button onClick={prevPage} disabled={currentPage === 1} className='bg-customYellow p-3 rounded font-inter font-semibold cursor-pointer'>Previous Chapter</button>
-                        <button onClick={nextPage} disabled={currentPage === currentChapter.totalChapters} className='border border-customYellow ml-3 p-3 font-inter font-semibold text-customYellow items-center rounded cursor-pointer'>Next Chapter</button>
+                        <button onClick={prevPage} disabled={currentPage === 1} className='bg-secondaryColor p-3 rounded font-inter  text-black font-semibold cursor-pointer'>Previous Chapter</button>
+                        <button onClick={nextPage} disabled={currentPage === currentChapter.totalChapters} className='border border-secondaryColor ml-3 p-3 font-inter font-semibold text-secondaryColor items-center rounded cursor-pointer'>Next Chapter</button>
                     </div>
                 </div>
             </div>

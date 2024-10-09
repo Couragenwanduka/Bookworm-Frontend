@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useDrop } from 'react-dnd';
+import Rectangle from '../../Images/Icons/Rectangle 46.svg'
 
 const ItemType = 'ITEM';
 
@@ -15,14 +15,17 @@ const DroppableArea = ({ onDrop }) => {
     return (
       <div
         ref={drop}
-        className=" w-56  rounded"
+        className=" w-full  rounded"
         // style={{
         //   backgroundColor: isOver ? 'lightgreen' : 'bg-div4Color',
         // }}
       >
          
-        <div className="h-14 bg-gradient-to-t from-forGradientColor to-forGradientColor2 p-5 w-64  text-textColor  font-inter text-sm ">
-          {isOver ? 'Release to save' : 'Drop a book here'}
+         <div className="w-[110%] text-white font-inter text-sm relative">
+          <img src={Rectangle} className="w-[100%]" />
+          <h1 className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white text-opacity-40 ">
+            {isOver ? 'Release to save' : 'Drop a book here'}
+          </h1>
         </div>
       </div>
     );

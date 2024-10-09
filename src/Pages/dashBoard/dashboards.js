@@ -110,7 +110,7 @@ export const customStyles = {
 
   export const customStylesForBookModal = {
     content: {
-      top: '90%',
+      top: '80%',
       left: '45%',
       right: 'auto',
       bottom: 'auto',

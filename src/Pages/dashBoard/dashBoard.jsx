@@ -15,11 +15,14 @@ import SideBar from "../../components/sideBar/sideBar.jsx";
 import dashboardImage from "../../Images/assets/dashboardImage.svg";
 import ReadBook from "../../Images/Icons/ReadBook.svg";
 import savedBook from "../../Images/Icons/savedBook.svg";
+import Loading from "../../components/Animation/Loading.jsx";
+import LoadingAnimation from "../../Images/assets/Loading.json"
 
 const DashBoard = () => {
   const { userDetails } = useUser(); 
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingBook, setLoadingBook] = useState(true);
   const [categorys, setCategory] = useState([]);
   const [savedBooks, setSavedBooks] = useState([]);
   const [divContents, setDivContents] = useState([]);
@@ -40,13 +43,14 @@ const DashBoard = () => {
 
   const fetchBooksByCategory = async (category) => {
     try {
-      setLoading(true);
+      setLoadingBook(true);
       const books = await getBookFunction(category);
       setBooks(books);
+      setLoadingBook(false);
     } catch (error) {
       console.error("Error fetching books:", error);
     } finally {
-      setLoading(false);
+      setLoadingBook(false);
     }
   };
 
@@ -55,6 +59,7 @@ const DashBoard = () => {
       setLoading(true);
       const books = await getSavedBook(id);
       setSavedBooks(books);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching books:", error);
     } finally {
@@ -130,11 +135,11 @@ const DashBoard = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="bg-primaryColor overflow-hidden h-screen flex ">
-        <SideBar  className={'w-[15%]'}/>
-        <section className="w-[85%]">
+        <SideBar  className={'w-[16%]'}/>
+        <section className="w-[86%]">
             <NavBar />
             <div className="flex ml-10 h-screen">
-              <div className="flex flex-col  overflow-y-auto h-screen w-full">
+              <div className="flex flex-col  overflow-y-auto h-screen w-[70%]">
 
                 <div className="bg-[#27373A] flex  justify-evenly rounded-xl w-full">
                   <span className="flex flex-col ">
@@ -154,34 +159,36 @@ const DashBoard = () => {
                 </div>
 
                 <div className="mt-10 mb-40">
-                  <h1 className="text-white text-xl font-inter">Categories</h1>
-                  <span className="flex justify-evenly mt-5 ml-custom-for-button font-inter text-base font-semibold w-full text-textColor ">
+                  <h1 className="text-white text-3xl font-inter">Categories</h1>
+                  <span className="flex gap-20 mt-5 font-inter text-base font-semibold w-full text-textColor ">
                     {categories.map((category) => (
                       <button
                         key={category.value}
-                        className={` w-20 p-2 rounded-xl ${activeCategory === category.value ? 'bg-customYellow text-black' : ''} `}
+                        className={` w-20 p-2 rounded-lg  ${activeCategory === category.value ? 'bg-secondaryColor text-black' : 'text-white text-opacity-40'} `}
                         onClick={() => handleCategoryChange(category.value)}
                       >
                         {category.label}
                       </button>
                     ))}
                   </span>
-                  <div className="grid grid-cols-4 gap-5 mt-6 w-full ">
-                    {loading && <div className="col-span-3 "><img src="src/assets/Spinner@1x-1.0s-200px-200px (2).svg" className="" /></div>}
-                    {!loading && books.map((book) => (
+                  <div className="grid grid-cols-5 gap-5 mt-10 w-full ">
+                    {loadingBook && <div className="col-span-3 "><Loading animation={LoadingAnimation}/></div>}
+                    {!loadingBook && books.map((book) => (
                       <DraggableBook key={book.id} book={book} />
                     ))}
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col  -mt-4 overflow-y-scroll h-screen p-4 w-2/4">
-                <div className="flex">
-                  <span className="bg-[#27373A]  w-30 items-center rounded-xl">
+
+
+              <div className="flex flex-col  -mt-4 overflow-y-scroll h-screen p-4 w-[30%]">
+                <div className="flex w-[90%]">
+                  <span className="bg-[#27373A]  w-[50%] items-center rounded-xl">
                     <img src={ReadBook} alt="Books Read Icon" className="ml-5 mt-3" />
                     <p className="ml-5 text-white text-opacity-35 text-lg mr-5">Books Read</p>
                     <p className="mt-5 ml-5 text-white text-4xl font-inter">0</p>
                   </span>
-                  <span className="bg-[#27373A]  w-30 items-center rounded-xl ml-3">
+                  <span className="bg-[#27373A]  w-[50%] items-center rounded-xl ml-3">
                     <img src={savedBook} alt="Books Saved Icon" className="ml-5 mt-3" />
                     <p className="ml-5 text-white text-opacity-35 text-lg mr-5">Books Saved</p>
                     <p className="mt-5 ml-5 text-white text-4xl font-inter mb-3">{savedBooks.length}</p>
@@ -192,14 +199,14 @@ const DashBoard = () => {
                     <h1 className="text-white mr-10 font-normal text-2xl text-semibold ">My BookShelf</h1>
                     <button className="text-2xl text-white font-inter mt-1 mb-0" onClick={addDiv}>{String.fromCharCode(0x002B)}</button>
                   </span>
-                  <div  className=" rounded bg-[#27373A] h-full w-10/12 pt-3.5 pl-1">
+                  <div  className=" rounded bg-[#27373A] h-full w-[90%] pt-3.5 pl-1 pb-20">
             {divContents.map((content, index) => (
               <div key={index} className="ml-3">
                 {/* {content} */}
                 <DroppableArea onDrop={handleDrop} className='mt-4'/>
                 <span className="relative group">
             <button className="hidden group-hover:flex absolute  left-32">
-              <MdModeEditOutline className="text-sm text-customYellow" />
+              <MdModeEditOutline className="text-sm text-secondaryColor" />
             </button>
             <p className=" p-1 bg-slate-800 w-32 text-textColor2 text-sm font-inter font-semibold">New Bookshelf</p>
             </span>
@@ -211,24 +218,26 @@ const DashBoard = () => {
       {Object.keys(groupedBooks).map((category) => (
         <div key={category} className="flex flex-col">
           <DroppableArea onDrop={handleDrop} />
-          <div className="flex overflow-x-auto w-64 ">
+          <div className="flex overflow-x-auto w-56 ">
             {groupedBooks[category].map((book) => (
               <div key={book._id} className="flex-shrink-0 w-10">
                 <img
                   src={book.image}
                   alt={book.title}
-                  className="w-20 h-32 border-4 border-borderColor3"
+                  className="w-20 h-32 border-4 border-[#55686B]"
                 />
               </div>
             ))}
           </div>
-          <span className="relative group">
-            <button className="hidden group-hover:flex absolute  ml-28 mt-1"  onClick={() => handleCategoryClick(category)}>
-            <MdModeEditOutline className="text-sm text-customYellow" />
+          <span className="relative group flex items-start">
+           <span className="flex justify-center items-center">
+           <button className="hidden group-hover:flex absolute  ml-28 mt-1"  onClick={() => handleCategoryClick(category)}>
+            <MdModeEditOutline className="text-sm text-[#655A3F]" />
             </button>
-            <p className="p-1 bg-div5Color w-32 text-textColor2 text-sm font-inter font-semibold">
+            <p className="p-1 bg-[#E0DEAD] w-32 text-[#655A3F] text-sm font-inter font-semibold">
           {category}
           </p>
+           </span>
           <EditModal
             isOpen={isModalOpen}
             onRequestClose={closeModal}

@@ -25,21 +25,23 @@ const EditModal = ({ isOpen, onRequestClose, category }) => {
       contentLabel="Edit Category Modal"
       ariaHideApp={false}
     >
-      <div className='bg-white bg-opacity-35 h-full rounded-md'>
-        <div className='text-customTextColor ml-5 text-lg font-inter pt-3 flex  border-none'>
-            <BiSolidCategory  className='mr-2 mt-1'/>
-            Rename
-            <button className='ml-60' onClick={onRequestClose}>X</button>
+      <div className='bg-[#27373A] h-full rounded-md  justify-center'>
+        <div className='text-secondaryColor text-lg font-inter flex items-center p-5 justify-between border-b  border-textColor '>
+            <div className='flex'>
+                <BiSolidCategory  className='mr-2 mt-1'/>
+                Rename
+              </div>
+            <button className='' onClick={onRequestClose}>X</button>
          </div>
-         <div className='border border-b border-textColor mt-2'></div>
-        <form className='flex flex-col mt-5 '>
+     
+        <form className='flex flex-col mt-20  justify-center items-center'>
             <input
             type='text'
             placeholder='Enter new name'
-            className='border-1 rounded-md p-2 w-72 ml-16 bg-transparent border  bg-customDivColor'
+            className='border-1 rounded-md p-2 w-96  bg-transparent border  border-white border-opacity-40 focus:outline-none text-white text-opacity-40'
             onChange={(e)=>{setText(e.target.value)}}
             />
-            <button  className='bg-customYellow w-20 rounded-md p-1 mt-5 ml-40 text-black font-inter text-xl' onClick={handleUpdateBookCategory}>Add</button>
+            <button  className='bg-secondaryColor w-20 rounded-md p-1 mt-5 text-black font-inter text-xl' onClick={handleUpdateBookCategory}>Add</button>
         </form>
       </div>
     
